@@ -1,0 +1,170 @@
+.single-chat-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 1rem;
+  height: 10%;
+  /* height: 80px; */
+  max-height: 80px;
+}
+
+.single-chat-header .icons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+
+.single-chat-header .icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  font-size: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.single-chat-header .icon:hover {
+  cursor: pointer;
+  border-radius: 50%;
+  background-color: #415763;
+}
+
+.single-chat-header .user {
+  display: flex;
+  gap: 1rem;
+}
+
+.single-chat-header .group-members {
+  display: flex;
+}
+
+.single-chat-header .avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.single-chat-header .avatar .img {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  object-fit: cover;
+}
+
+.single-chat-header .avatar .img:hover {
+  cursor: pointer;
+}
+
+.single-chat-header .avatar .img.non-present,
+.single-chat-header .avatar .group-img {
+  border: 2px solid #415763;
+}
+.single-chat-header .avatar .img.non-present {
+  font-size: 0.875rem;
+}
+
+.single-chat-header .avatar .img.non-present {
+  cursor: pointer;
+}
+
+.single-chat-header .info {
+  display: flex;
+  flex-direction: column;
+}
+
+.single-chat-header .info:hover {
+  cursor: pointer;
+}
+
+
+
+.more-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: 8px;
+  background-color: #415763;
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  z-index: 1000;
+  min-width: 160px;
+  border-radius: 4px;
+}
+
+/* Single menu item */
+.more-menu-item {
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  transition: background-color 0.15s ease;
+}
+
+.more-menu-item:hover {
+  background-color: #3d515c;
+}
+
+/* positioning context */
+.icons {
+  position: relative;
+}
+
+
+/* Dark overlay behind popup */
+.dlt-popup {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: (-50%,-50%);
+  background-color: rgba(167, 165, 165, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  border-radius: 12px;
+}
+
+/* Popup container */
+.dlt-popup ul {
+  background-color:#2c2c2ce0;
+  border-radius: 12px;
+  min-width: 240px;
+  max-width: 90%;
+  margin: 0;
+  padding: 8px;
+  margin: 4xp;
+  list-style: none;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+/* Popup options */
+.dlt-popup li {
+  padding: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  color: #adadad;
+  transition: background-color 0.15s ease;
+}
+
+/* Hover effect */
+.dlt-popup li:hover {
+  background-color: #393a3a;
+}
+
+/* Destructive emphasis */
+.dlt-popup li:first-child {
+  color: red;
+}
+
+/* Mobile safe spacing */
+@media (max-width: 480px) {
+  .dlt-popup ul {
+    min-width: 240px;
+  }
+}
