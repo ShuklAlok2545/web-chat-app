@@ -127,6 +127,7 @@ export const updateProfile = async (request, response, next) => {
   try {
     const { userId } = request;
     const { firstName, lastName, color, image } = request.body;
+    console.log('image',image)
     if (!firstName || !lastName) {
       return response
         .status(400)
@@ -138,6 +139,7 @@ export const updateProfile = async (request, response, next) => {
       { firstName, lastName, color, image, profileSetup: true },
       { new: true, runValidators: true }
     );
+
     return response.status(200).json({
       id: userData.id,
       email: userData.email,
@@ -154,62 +156,63 @@ export const updateProfile = async (request, response, next) => {
   }
 };
 
-// export const addProfileImage = async (request, response, next) => {
-//   try {
-//     if (!request.file) {
-//       return response.status(400).json({ error: "Image is required" });
-//     }
+export const addProfileImage = async (request, response, next) => {
+  try {
+    if (!request.file) {
+      return response.status(400).json({ error: "Image is required" });
+    }
 
-//     const date = Date.now();
-//     let fileName = "uploads/profiles/" + date + request.file.originalname;
-//     renameSync(request.file.path, fileName);
+    const date = Date.now();
+    console.log('file rcvd ',file);
+    let fileName = "uploads/profiles/" + date + request.file.originalname;
+    renameSync(request.file.path, fileName);
 
-//     const updatedUser = await User.findByIdAndUpdate(
-//       request.userId,
-//       { image: fileName },
-//       { new: true, runValidators: true }
-//     );
+    const updatedUser = await User.findByIdAndUpdate(
+      request.userId,
+      { image: fileName },
+      { new: true, runValidators: true }
+    );
 
-//     return response.status(200).json({
-//       image: updatedUser.image,
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return response.status(500).json({ error: error.message });
-//   }
-// };
+    return response.status(200).json({
+      image: updatedUser.image,
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ error: error.message });
+  }
+};
 
-// export const removeProfileImage = async (request, response, next) => {
-//   try {
-//     const { userId } = request;
-//     const { firstName, lastName, color } = request.body;
-//     const user = await User.findById(userId);
+export const removeProfileImage = async (request, response, next) => {
+  try {
+    const { userId } = request;
+    const { firstName, lastName, color } = request.body;
+    const user = await User.findById(userId);
 
-//     if (!user) {
-//       return response.status(404).json({ error: "User not found" });
-//     }
+    if (!user) {
+      return response.status(404).json({ error: "User not found" });
+    }
 
-//     if (user.image) {
-//       unlinkSync(user.image);
-//     }
+    if (user.image) {
+      unlinkSync(user.image);
+    }
 
-//     user.image = null;
-//     await user.save();
+    user.image = null;
+    await user.save();
 
-//     const userData = await User.findByIdAndUpdate(
-//       userId,
-//       { firstName, lastName, color, profileSetup: true },
-//       { new: true, runValidators: true }
-//     );
+    const userData = await User.findByIdAndUpdate(
+      userId,
+      { firstName, lastName, color, profileSetup: true },
+      { new: true, runValidators: true }
+    );
 
-//     return response.status(200).json({
-//       message: "Profile image removed successfully",
-//     });
-//   } catch (error) {
-//     console.log(error);
-//     return response.status(500).json({ error: error.message });
-//   }
-// };
+    return response.status(200).json({
+      message: "Profile image removed successfully",
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ error: error.message });
+  }
+};
 
 export const logout = async (request, response, next) => {
   try {

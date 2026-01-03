@@ -11,6 +11,7 @@ import { GET_USER_INFO_ROUTE } from "./utils/constants";
 import { toast } from "react-toastify";
 
 const AuthRoute = ({ children }) => {
+  
   const { userInfo } = useAppStore();
   const isAuthenticated = !!userInfo;
 

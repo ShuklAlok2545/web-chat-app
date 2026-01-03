@@ -19,6 +19,7 @@ const databaseURL = process.env.DATABASE_URL;
 app.use(
   cors({
     origin: [process.env.ORIGIN],
+    //origin:'https://gorgeous-stroopwafel-01a443.netlify.app',
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })

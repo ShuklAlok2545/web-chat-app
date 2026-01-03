@@ -131,36 +131,40 @@
 
 /* Popup container */
 .dlt-popup ul {
-  background-color:#2c2c2ce0;
+  background-color:#8f8f8fe0;
   border-radius: 12px;
-  min-width: 240px;
+  min-width: 260px;
   max-width: 90%;
   margin: 0;
   padding: 8px;
   margin: 4xp;
   list-style: none;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 20px 40px rgba(161, 161, 161, 0.25);
 }
 
 /* Popup options */
 .dlt-popup li {
   padding: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: bold;
   color: #adadad;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.25s ease;
+  color: rgb(171, 17, 17);
 }
+
+
+/* Destructive emphasis */
+/* .dlt-popup li:first-child {
+  color: rgb(132, 3, 3);
+} */
 
 /* Hover effect */
 .dlt-popup li:hover {
-  background-color: #393a3a;
+  color: rgb(201, 7, 7);
+  border-radius: 4px;
 }
 
-/* Destructive emphasis */
-.dlt-popup li:first-child {
-  color: red;
-}
 
 /* Mobile safe spacing */
 @media (max-width: 480px) {

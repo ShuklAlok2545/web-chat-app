@@ -6,10 +6,13 @@ import {
   HOST,
   LOGOUT_ROUTE,
   UPDATE_PROFILE_ROUTE,
+  ADD_PROFILE_IMAGE_ROUTE,
 } from "../../../utils/constants";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import upload from "../../../lib/upload";
+// import upload from "../../../lib/upload";
+
+import { uploadToCloudinary } from "../../../lib/cloudinary";
 
 const LeftSidebarProfile = () => {
   const [activeFilter, setActiveFilter] = useState("all");
@@ -37,6 +40,8 @@ const LeftSidebarProfile = () => {
   const [image, setImage] = useState(null);
   const [selectedColor, setSelectedColor] = useState(0);
   const fileInputRef = useRef(null);
+  const [imageFile, setImageFile] = useState(null);
+
 
   useEffect(() => {
     
@@ -62,6 +67,7 @@ const LeftSidebarProfile = () => {
     return true;
   };
 
+
   const saveChanges = async () => {
     if (validateProfile()) {
       try {
@@ -80,9 +86,9 @@ const LeftSidebarProfile = () => {
 
         if (response.status === 200 && response.data) {
           setUserInfo({ ...response.data });
-          // setActiveIcon("chat");
+          setActiveIcon("chat");
           toast.success("Profile updated successfully");
-          // navigate("/chat");
+          navigate("/chat");
         }
       } catch (error) {
         console.log(error);
@@ -91,9 +97,9 @@ const LeftSidebarProfile = () => {
     }
   };
 
-  // const handleFileInputClick = () => {
-  //   fileInputRef.current.click();
-  // };
+  const handleFileInputClick = () => {
+    fileInputRef.current.click();
+  };
 
   const navigate = useNavigate();
 
@@ -121,39 +127,50 @@ const LeftSidebarProfile = () => {
   };
 
   const handleImageChange = async (event) => {
-    let fileUrl = null;
+    //let fileUrl = null;
 
     try {
       const file = event.target.files[0];
-
       // alert if file size exceeds 10MB
       if (file.size > 10 * 1024 * 1024) {
         alert("File size exceeds 10MB");
         return;
       }
+
       // console.log("file:");
       // console.log(file);
 
       if (file) {
-        // setShowFileUploadPlaceholder(true);
+      setImageFile(file);
+      //console.log('uploading')
 
-        fileUrl = await upload(file, userInfo.id);
+      const response = await uploadToCloudinary(file);
 
-        if (fileUrl) {
-          setImage(fileUrl);
-        }
+      if(response.secure_url){
+        //console.log(response.secure_url)
+        setImage(response.secure_url);
+      }
+      console.log('uploaded')
+
+
+       //setShowFileUploadPlaceholder(true);
+        //fileUrl = await upload(file, userInfo.id);
+       // if (fileUrl) {
+        //   setImage(fileUrl);
+        // }
       }
     } catch (error) {
       console.log(error);
     }
   };
 
+
   return (
     <div className="left-sidebar-profile">
       <h1>Profile</h1>
 
       <div className="info-container">
-        {/* <div>
+        <div>
           <input
             type="file"
             ref={fileInputRef}
@@ -162,7 +179,7 @@ const LeftSidebarProfile = () => {
             name="profile-image"
             accept="image/png, image/jpeg, image/jpg, image/svg, image/webp, image/jfif"
           />
-        </div> */}
+        </div>
 
         <div className="info-inputs">
           <div className="info-input-container">
@@ -170,11 +187,12 @@ const LeftSidebarProfile = () => {
               <div className="profile-image uploading">
                 {`${uploadProgress.toFixed(2)}%`}
               </div>
-            ) : image ? (
+            ) : 
+            image ? (
               <img
                 src={image}
-                alt=""
-                // alt="profile-image"
+                // alt=""
+                alt="profile-image"
                 className="profile-image"
                 onClick={handleImageClick}
               />
@@ -182,28 +200,29 @@ const LeftSidebarProfile = () => {
               <div className="profile-image" onClick={handleImageClick}>
                 <svg
                   viewBox="0 0 340 340"
-                  // className="profile-image-default-user-svg"
+                  className="profile-image-default-user-svg"
                   xmlns="http://www.w3.org/2000/svg"
                   width="340"
                   height="340"
                 >
                   <path
                     fill="#2c2e3b"
-                    d="m169,.5a169,169 0 1,0 2,0zm0,86a76,76 0 1
-1-2,0zM57,287q27-35 67-35h92q40,0 67,35a164,164 0 0,1-226,0"
+                    d="m169,.5a169,169 0 1,0 2,0zm0,86a76,76 0 11-2,0zM57,287q27-35 67-35h92q40,0 67,35a164,164 0 0,1-226,0"
                   />
                 </svg>
               </div>
             )}
+
             <input
               type="file"
               ref={fileInputRef}
               className="hidden"
               onChange={handleImageChange}
-              // name="profile-image"
+              name="profile-image"
               accept="image/png, image/jpeg, image/jpg, image/svg, image/webp, image/jfif"
             />
           </div>
+
           <div className="info-input-container">
             <input
               placeholder="Email"
@@ -222,6 +241,7 @@ const LeftSidebarProfile = () => {
               className="info-input"
             />
           </div>
+
           <div className="info-input-container">
             <input
               placeholder="Last Name"
@@ -232,6 +252,7 @@ const LeftSidebarProfile = () => {
             />
           </div>
         </div>
+
         <div className="info-input-container">
           <button
             className={`info-button ${

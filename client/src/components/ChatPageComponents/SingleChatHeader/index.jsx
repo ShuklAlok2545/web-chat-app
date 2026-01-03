@@ -9,6 +9,7 @@ import { HiUserGroup } from "react-icons/hi";
 import {useRef, useState } from "react";
 
 import {GET_USER_INFO_ROUTE }from "../../../utils/constants";
+import { deleteMsgBothSide } from "../../../../../server/controllers/DeleteMessagesController";
 
 
 
@@ -38,12 +39,22 @@ const SingleChatHeader = () => {
   const DeleteBothSide = async () => {
     try{
       console.log('dlt both side')
-      console.log('users',userInfo)
-      await apiClient.post(`/api/delete/msg-both-side/`,{sender:userInfo.id, receiver:selectedChatData._id})
+      closeChat();
+      setSelectedChatMessages([]);
       setdltPopUp(false);
       setMoremenu(false)
-      setSelectedChatMessages([]);
-      closeChat();
+
+      if(selectedChatType === 'group'){
+        console.log(selectedChatData)
+        await apiClient.post(`/api/delete/msg-both-side/`,{chatType:selectedChatType,selectedChatData})
+        setSelectedChatMembers([]);
+      }
+      if(selectedChatType === 'contact'){
+        const userData = {...selectedChatData,sender:userInfo.id}
+        // console.log(userData)
+        await apiClient.post(`/api/delete/msg-both-side/`,{chatType:selectedChatType,userData})
+      }
+      //closeChat();
     }
     catch(e){
       console.log(e)
@@ -197,7 +208,7 @@ const SingleChatHeader = () => {
         {dltPopUp && (
           <div className="dlt-popup" >
            <ul   onClick={(e) => e.stopPropagation()}>
-            <li onClick={DeleteBothSide}>Delete chat from both side</li>
+            <li onClick={DeleteBothSide}>{(selectedChatType === 'group')?'delete group chats from evryone':'delete chats from evryone'}</li>
             {/* <li onClick={DeleteForMySide}>Delete only for me</li> */}
            </ul>
           </div>

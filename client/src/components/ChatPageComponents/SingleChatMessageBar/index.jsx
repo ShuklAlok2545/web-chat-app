@@ -1,18 +1,18 @@
 import { RiEmojiStickerLine } from "react-icons/ri";
 import { GrAttachment } from "react-icons/gr";
 import { IoSend } from "react-icons/io5";
-// import EmojiPicker from "emoji-picker-react";
+import EmojiPicker from "emoji-picker-react";
 import { useEffect, useRef, useState } from "react";
 
 import "./SingleChatMessageBar.css";
 import { useAppStore } from "../../../store";
 import { useSocket } from "../../../context/SocketContext";
 import upload from "../../../lib/upload";
-
+import { uploadToCloudinary } from "../../../lib/cloudinary";
 const SingleChatMessageBar = () => {
-  //   const emojiRef = useRef();
+    const emojiRef = useRef();
 
-  //   const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
+    const [emojiPickerOpen, setEmojiPickerOpen] = useState(false);
 
   const socket = useSocket();
 
@@ -28,21 +28,21 @@ const SingleChatMessageBar = () => {
 
   const [message, setMessage] = useState("");
 
-  //   useEffect(() => {
-  //     function handleClickOutside(event) {
-  //       if (emojiRef.current && !emojiRef.current.contains(event.target)) {
-  //         setEmojiPickerOpen(false);
-  //       }
-  //     }
-  //     document.addEventListener("mousedown", handleClickOutside);
-  //     return () => {
-  //       document.removeEventListener("mousedown", handleClickOutside);
-  //     };
-  //   }, [emojiRef]);
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (emojiRef.current && !emojiRef.current.contains(event.target)) {
+          setEmojiPickerOpen(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [emojiRef]);
 
-  //   const handleAddEmoji = (emoji) => {
-  //     setMessage((message) => message + emoji.emoji);
-  //   };
+    const handleAddEmoji = (emoji) => {
+      setMessage((message) => message + emoji.emoji);
+    };
 
   const messageInputRef = useRef();
 
@@ -108,7 +108,8 @@ const SingleChatMessageBar = () => {
       if (file) {
         // setShowFileUploadPlaceholder(true);
 
-        fileUrl = await upload(file, selectedChatData._id);
+        const res = await uploadToCloudinary(file);
+        fileUrl = res.secure_url;
 
         if (fileUrl) {
           if (selectedChatType === "contact") {
@@ -139,21 +140,21 @@ const SingleChatMessageBar = () => {
 
   return (
     <div className="message-bar">
-      <div className="message-bar-icon currently-disabled-icon">
+      <div className="message-bar-icon ">
         {/* <div className="emoji-picker-icon" onClick={() => setEmojiPickerOpen(!emojiPickerOpen)}> */}
         {/* <div className="emoji-picker-icon" ref={emojiRef}> */}
         <div className="emoji-picker-icon">
           <RiEmojiStickerLine
-          // onClick={() => setEmojiPickerOpen(!emojiPickerOpen)}
+          onClick={() => setEmojiPickerOpen(!emojiPickerOpen)}
           />
-          {/* <div className="emoji-picker" ref={emojiRef}>
+          <div className="emoji-picker" ref={emojiRef}>
             <EmojiPicker
               theme="dark"
               open={emojiPickerOpen}
               onEmojiClick={handleAddEmoji}
               autoFocusSearch={false}
             />
-          </div> */}
+          </div>
         </div>
       </div>
       <button className="message-bar-icon" onClick={handleFileAttachmentClick}>
