@@ -83,6 +83,7 @@ const LeftSidebarContactOrGroupProfile = () => {
         console.log(error);
       }
     };
+    
     const getGroupFiles = async () => {
       try {
         const response = await apiClient.get(
@@ -143,8 +144,8 @@ const LeftSidebarContactOrGroupProfile = () => {
   const handleDownload = (url) => {
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", ""); // This forces a download -> Downloads with the original filename from the URL
-    // link.setAttribute("download", "myFileName.extension"); // Downloads as "myImage.jpg" for example
+    //link.setAttribute("download", ""); // This forces a download -> Downloads with the original filename from the URL
+    link.setAttribute("download", "myFileName.extension"); // Downloads as "myImage.jpg" for example
     document.body.appendChild(link);
     link.click();
     // link.remove(); redundant -> below line already does the same thing
@@ -270,7 +271,7 @@ const LeftSidebarContactOrGroupProfile = () => {
                         <div
                           className="group-in-common"
                           key={group._id}
-                          // onClick={() => handleGroupInCommonClick(group)}
+                          onClick={() => handleGroupInCommonClick(group)}
                         >
                           {group.name}
                         </div>
@@ -296,8 +297,8 @@ const LeftSidebarContactOrGroupProfile = () => {
                           <div
                             className="image-container"
                             // onClick={() => {
-                            //   setShowImage(true);
-                            //   setImageURL(file.fileUrl);
+                            //  // setShowImage(true);
+                            //   //setImageURL(file.fileUrl);
                             // }}
                           >
                             <img src={file.fileUrl} alt="" />

@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import "./SingleChatMessageBar.css";
 import { useAppStore } from "../../../store";
 import { useSocket } from "../../../context/SocketContext";
-import upload from "../../../lib/upload";
+// import upload from "../../../lib/upload";
 import { uploadToCloudinary } from "../../../lib/cloudinary";
 const SingleChatMessageBar = () => {
     const emojiRef = useRef();

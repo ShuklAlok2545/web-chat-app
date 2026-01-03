@@ -121,19 +121,19 @@ const AuthPage = () => {
         <div className="form-container sign-up-container">
           <form onSubmit={handleSignup}>
             <h1 className="sign-up-heading">Sign up</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
+            <div className="social-container">
+              {/* <a href="#" className="social">
                 <i className="fab fa-facebook-f"></i>
-              </a>
-              <a href="#" className="social">
+              </a> */}
+              {/* <a href="#" className="social">
                 <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" className="social">
+              </a> */}
+              {/* <a href="#" className="social">
                 <i className="fab fa-linkedin-in"></i>
-              </a>
+              </a> */}
             </div>
-            <span>or use your email for registration</span> */}
-            {/* <input type="text" placeholder="Name" /> */}
+            {/* <span>or use your email for registration</span> */}
+            <input type="text" placeholder="Name" />
             <input
               type="email"
               placeholder="Email"
@@ -191,9 +191,9 @@ const AuthPage = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            <a href="#" className="forgot-password-link">
+            {/* <a href="#" className="forgot-password-link">
               Forgot your password?
-            </a>
+            </a> */}
             <button
               type="submit"
               className={

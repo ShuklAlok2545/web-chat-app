@@ -27,6 +27,7 @@ const LeftSidebar = () => {
         setFriendRequestsCount(response.data.friendRequests.length);
       }
     };
+    
 
     getFriendRequests();
   }, []);

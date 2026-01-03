@@ -13,7 +13,7 @@ import deleteMsgsRoutes from "./routes/deleteMsgsRoutes.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 const databaseURL = process.env.DATABASE_URL;
 
 app.use(

@@ -6,8 +6,8 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../../store";
 import { IoArrowBack } from "react-icons/io5";
-import upload from "../../lib/upload";
-
+// import upload from "../../lib/upload";
+import { uploadToCloudinary } from "../../lib/cloudinary";
 const ProfileLandingPage = () => {
   const navigate = useNavigate();
   const {
@@ -108,10 +108,10 @@ const ProfileLandingPage = () => {
       if (file) {
         // setShowFileUploadPlaceholder(true);
 
-        fileUrl = await upload(file, userInfo.id);
+        fileUrl = await uploadToCloudinary(file);
 
-        if (fileUrl) {
-          setImage(fileUrl);
+        if (fileUrl.secure_url) {
+          setImage(fileUrl.secure_url);
         }
       }
     } catch (error) {
@@ -138,11 +138,11 @@ const ProfileLandingPage = () => {
 
   return (
     <div className="profile-landing-page">
-      {/* <div>
+      <div>
         <div onClick={handleNavigate}>
           <IoArrowBack className="go-back-arrow" />
         </div>
-      </div> */}
+      </div>
       <div className="info-container">
         <div className="info-inputs">
           <div className="info-input-container">
@@ -172,8 +172,7 @@ const ProfileLandingPage = () => {
                 >
                   <path
                     fill="#2c2e3b"
-                    d="m169,.5a169,169 0 1,0 2,0zm0,86a76,76 0 1
-1-2,0zM57,287q27-35 67-35h92q40,0 67,35a164,164 0 0,1-226,0"
+                    d="m169,.5a169,169 0 1,0 2,0zm0,86a76,76 0 11-2,0zM57,287q27-35 67-35h92q40,0 67,35a164,164 0 0,1-226,0"
                   />
                 </svg>
               </div>
