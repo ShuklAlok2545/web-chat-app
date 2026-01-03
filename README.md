@@ -1,19 +1,18 @@
-## Realtime Chat App
+## Realtime Web Chat App
 
-A real-time chat application whose style is heavily inspired by WhatsApp. Built using the MERN Stack (`MongoDB`, `Express.js`, `React`, `Node.js`) with `Firebase` for file storage and `Socket.IO` for instant messaging.
+A real-time chat application whose style is heavily inspired by WhatsApp. Built using the MERN Stack (`MongoDB`, `Express.js`, `React`, `Node.js`) with `Cloudinary` for file storage and `Socket.IO` for instant messaging.
 
 > [!WARNING]
 > Messages sent in direct messages and group chats are **_not encrypted_** and are stored as **_plain text_** in the database. **DO NOT share** sensitive information, such as passwords, financial details, or any private data that you use in other applications or accounts. Use this chat app only for the purpose of previewing a demo application.
 
 ### 🚩 Live Demo
 
-Current version running at: [https://realtime-chat-app-one-topaz.vercel.app](https://realtime-chat-app-one-topaz.vercel.app)
+<!-- Current version running at: [https://realtime-chat-app-one-topaz.vercel.app](https://realtime-chat-app-one-topaz.vercel.app) -->
 
 > [!NOTE]
-> It may take up to 1 minute for the site to be brought up while the loading indicator is displayed, since free instances in Render will spin down with inactivity which can delay requests by 50 seconds or more.
+> It may take up to 1 minute for the site to be brought up while the loading indicator is displayed, since free instances in Netlify will spin down with inactivity which can delay requests by 50 seconds or more.
 
 ### ✨ Features
-
 - signing up & signing in
 - setting up your profile info when signing in for the first time
 - updating your profile info
@@ -55,7 +54,7 @@ VITE_SERVER_URL="http://localhost:3001"
 
 - `server`
 
-```bash
+```zsh/bash
 cd server
 npm install
 npm run dev
@@ -63,7 +62,7 @@ npm run dev
 
 - `client`
 
-```bash
+```zsh/bash
 cd client
 npm install
 npm run dev
@@ -71,8 +70,8 @@ npm run dev
 
 open http://localhost:3000 with your browser to see the result.
 
-### 📷 Screenshots
-
+<!-- ### 📷 Screenshots -->
+<!-- 
 `SIGNING UP & SIGNING IN:`
 ![signup](https://github.com/user-attachments/assets/9f656b5b-bdd6-42be-9293-e44f52ca0359)
 ![signin](https://github.com/user-attachments/assets/7f9e478c-c802-437d-acae-10794bf12392)
@@ -100,4 +99,4 @@ open http://localhost:3000 with your browser to see the result.
 
 `VIEWING FRIEND & GROUP PROFILE:`
 ![friend-info](https://github.com/user-attachments/assets/c577cda1-1f15-4c74-a367-73661c56a5bc)
-![group-info](https://github.com/user-attachments/assets/bcb770e9-aea9-4b42-bcfd-02ae935d19fd)
+![group-info](https://github.com/user-attachments/assets/bcb770e9-aea9-4b42-bcfd-02ae935d19fd) -->
