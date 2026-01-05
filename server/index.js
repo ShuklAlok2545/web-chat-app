@@ -13,7 +13,7 @@ import deleteMsgsRoutes from "./routes/deleteMsgsRoutes.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3001;
+const port = process.env.PORT;
 const databaseURL = process.env.DATABASE_URL;
 
 app.use(
@@ -37,7 +37,7 @@ app.use("/api/friend-requests", friendRequestsRoutes);
 app.use("/api/delete", deleteMsgsRoutes);
 
 const server = app.listen(port, "0.0.0.0",() => {
-  console.log(`Server is running on port ${port} at http://localhost:${port}`);
+  console.log(`Server is running on port ${port}`);
 });
 
 setupSocket(server);
