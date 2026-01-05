@@ -7,7 +7,6 @@ import moment from "moment";
 const Chat = ({ contact, isGroup = false, isActive = false }) => {
   const getFileExtensionFromUrl = (url) => {
     if (!url) return "";
-
     // Remove query parameters if they exist
     const pathWithoutParams = url.split("?")[0];
 
