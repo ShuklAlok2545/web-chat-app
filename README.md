@@ -2,12 +2,10 @@
 
 A real-time chat application whose style is heavily inspired by WhatsApp. Built using the MERN Stack (`MongoDB`, `Express.js`, `React`, `Node.js`) with `Cloudinary` for file storage and `Socket.IO` for instant messaging.
 
-### 🚩 Live Demo
+###Live Demo
 
 Current version running at: [https://letstalksapp.netlify.app](https://letstalksapp.netlify.app)
 
-> [!NOTE]
-> It may take up to 1 minute for the site to be brought up while the loading indicator is displayed, since free instances in Netlify will spin down with inactivity which can delay requests by 50 seconds or more.
 
 ### ✨ Features
 - signing up & signing in
@@ -22,6 +20,11 @@ Current version running at: [https://letstalksapp.netlify.app](https://letstalks
 - searching for a specific chat in direct messages and groups or a request in friend requests
 - viewing the `contact information`, `groups in common` and `files shared between you` in your friends' profile
 - viewing the `creation date`, `members` and `files shared` of the groups you are in
+
+  
+> [!NOTE]
+> It may take up to a minute for the site to be brought up while the loading indicator is displayed, since free instances in Netlify will spin down with inactivity which can delay requests by 50 seconds or more.
+
 
 ### ⚙ Setup
 
