@@ -2,7 +2,7 @@
 
 A real-time chat application whose style is heavily inspired by WhatsApp. Built using the MERN Stack (`MongoDB`, `Express.js`, `React`, `Node.js`) with `Cloudinary` for file storage and `Socket.IO` for instant messaging.
 
-###Live Demo
+###Live Demo -> currently server not running
 
 Current version running at: [https://letstalksapp.netlify.app](https://letstalksapp.netlify.app)
 
@@ -71,32 +71,17 @@ open http://localhost:3000 with your browser to see the result.
  `Profile created after SignUp`
 <img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 15 37" src="https://github.com/user-attachments/assets/4bc9ccbb-ac3c-4f0a-b0f5-3cc138e3e14a" />
 
-<!-- 
-`SIGNING UP & SIGNING IN:`
-![signup](https://github.com/user-attachments/assets/9f656b5b-bdd6-42be-9293-e44f52ca0359)
-![signin](https://github.com/user-attachments/assets/7f9e478c-c802-437d-acae-10794bf12392)
+`Add new Friend or send friend request`
+<img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 16 05" src="https://github.com/user-attachments/assets/8af0f2ca-66d5-406a-a769-7236ce5fcd3a" />
 
-`SETTING UP YOUR PROFILE:`
-![profile-landing](https://github.com/user-attachments/assets/25656c2d-9dcf-4f11-a242-b8e90745a84f)
+`Friend request recieved`
+<img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 16 45" src="https://github.com/user-attachments/assets/e25ca728-1e77-45a5-ae9d-626fc2fb6798" />
 
-`SENDING & VIEWING FRIEND REQUESTS:`
-![send-friend-request](https://github.com/user-attachments/assets/3e5d6bd1-5110-4452-8c73-4d159661719d)
-![friend-requests](https://github.com/user-attachments/assets/a81c0290-ff62-4f01-9792-de9be3ff30af)
+`Contact list to send messages`
+<img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 17 10" src="https://github.com/user-attachments/assets/f70e5c4b-a082-47aa-889a-4568afbec450" />
 
-`DIRECT MESSAGING:`
-![start-new-chat](https://github.com/user-attachments/assets/95dada0c-b57f-438f-87ec-b7c219b18880)
-![chats](https://github.com/user-attachments/assets/5ca65d19-c537-419e-984d-533a7d939aaf)
+`LetsTalks`
+<img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 17 31" src="https://github.com/user-attachments/assets/91a59320-a208-40cc-a592-489bb0019b24" />
 
-`GROUP MESSAGING:`
-![create-group](https://github.com/user-attachments/assets/cae7f705-9665-4c32-973b-c3fd89d75c60)
-![group-chat](https://github.com/user-attachments/assets/8c070f09-e482-47de-8b48-d059f453b6b6)
-
-`SEARCH FUNCTIONALITY:`
-![search-chats](https://github.com/user-attachments/assets/a01e754f-8a12-4b95-abcb-d4060a8a9a0d)
-
-`UPDATING YOUR PROFILE:`
-![profile-update](https://github.com/user-attachments/assets/858fc66f-5e2d-4ae6-b2a8-ea5b00315501)
-
-`VIEWING FRIEND & GROUP PROFILE:`
-![friend-info](https://github.com/user-attachments/assets/c577cda1-1f15-4c74-a367-73661c56a5bc)
-![group-info](https://github.com/user-attachments/assets/bcb770e9-aea9-4b42-bcfd-02ae935d19fd) -->
+`Share media`
+<img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 18 19" src="https://github.com/user-attachments/assets/ce2276b0-cb42-4f41-b7fe-5e589057218e" />
