@@ -67,7 +67,9 @@ npm run dev
 
 open http://localhost:3000 with your browser to see the result.
 
-<!-- ### 📷 Screenshots -->
+ ### 📷 Screenshots 
+ <img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 15 37" src="https://github.com/user-attachments/assets/4bc9ccbb-ac3c-4f0a-b0f5-3cc138e3e14a" />
+
 <!-- 
 `SIGNING UP & SIGNING IN:`
 ![signup](https://github.com/user-attachments/assets/9f656b5b-bdd6-42be-9293-e44f52ca0359)
