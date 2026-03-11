@@ -2,6 +2,7 @@
   background-color: #111b21;
   height: 100%;
   width: 30%;
+  min-width: fit-content;
   display: flex;
   flex-direction: column;
 }
@@ -372,16 +373,6 @@
   background-color: #222e35;
 }
 
-/* .chat-list .loading-chat-messages-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  width: 100%;
-  opacity: 0.5;
-  font-size: 2rem;
-} */
-
 .chat-list .modal-icon-disabled {
   opacity: 0.5;
   pointer-events: none;
@@ -415,4 +406,34 @@
 .footer .info-input-container .shared-files{
   width: max-content;
   height: 40px;
+}
+
+.chat-list>.friend-requests,.request-chats-container{
+  min-width: fit-content;
+  width: 80%;
+}
+
+
+@media (max-width:600px){
+  .chat-list{
+    width: 24%;
+  }
+
+  .sub-header{
+    max-width: 2px;
+  }
+  .filters{
+    font-size: 14px;
+    margin: 0;
+    width: 100%;
+    gap: 0.4rem;
+  }
+
+  .header,.sub-header{
+    margin: 1px;
+    width: 200px;
+  }
+  .tooltip .sub-header-icon{
+    width: 1rem;
+  }
 }

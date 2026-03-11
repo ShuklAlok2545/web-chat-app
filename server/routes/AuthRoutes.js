@@ -3,6 +3,7 @@ import {
   getUserInfo,
   login,
   signup,
+  signupViaGoogle,
   updateProfile,
   addProfileImage,
   removeProfileImage,
@@ -17,6 +18,7 @@ const upload = multer({ dest: "uploads/profiles/" });
 const authRoutes = Router();
 
 authRoutes.post("/signup", signup);
+authRoutes.post("/signupViaGoogle", signupViaGoogle);
 authRoutes.post("/login", login);
 authRoutes.get("/user-info", verifyToken, getUserInfo);
 authRoutes.post("/update-profile", verifyToken, updateProfile);

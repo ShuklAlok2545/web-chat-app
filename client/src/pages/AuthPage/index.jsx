@@ -4,7 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { useAppStore } from "../../store";
 import { toast } from "react-toastify";
 import { apiClient } from "../../lib/api-client";
-import { LOGIN_ROUTE, SIGNUP_ROUTE } from "../../utils/constants";
+import { LOGIN_ROUTE, SIGNUP_ROUTE, signupViaGoogle_ROUTE } from "../../utils/constants";
+import { FcGoogle } from "react-icons/fc";   // colored Google icon
+
+import { auth, loginWithGoogle, logout } from "../../lib/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const AuthPage = () => {
   const navigate = useNavigate();
@@ -115,6 +119,64 @@ const AuthPage = () => {
     };
   }, []);
 
+
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+    });
+    return () => unsubscribe();
+  }, []);
+
+
+
+    // Google login
+    const handleGoogleLogin = async () => {
+      try {
+        const userData = await loginWithGoogle();
+    
+        const { uid, displayName, email, photoURL } = userData;
+    
+        let check = "Login successful";
+    
+        const response = await apiClient.post(
+          signupViaGoogle_ROUTE,
+          { uid, email, displayName, photoURL },
+          { withCredentials: true }
+        );
+    
+        if (response.status === 201) {
+          // New user signup
+          setUserInfo(response.data.user);
+          navigate("/profile");
+          check = "Signup successful";
+        }
+    
+        if (response.status === 202) {
+          // Existing user login
+          const user = response.data.userExist;
+    
+          setUserInfo(user);
+    
+          if (user.profileSetup) {
+            navigate("/chat");
+          } else {
+            navigate("/profile");
+          }
+    
+          setActiveIcon("chat");
+          check = "Login successful";
+        }
+    
+        toast.success(check);
+      } catch (err) {
+        console.error("Login failed:", err);
+        toast.error("Google login failed");
+      }
+    };
+
   return (
     <div className="auth-page">
       <div className="container" ref={containerRef} id="container">
@@ -122,17 +184,17 @@ const AuthPage = () => {
           <form onSubmit={handleSignup}>
             <h1 className="sign-up-heading">Sign up</h1>
             <div className="social-container">
-              {/* <a href="#" className="social">
-                <i className="fab fa-facebook-f"></i>
-              </a> */}
-              {/* <a href="#" className="social">
-                <i className="fab fa-google-plus-g"></i>
-              </a> */}
-              {/* <a href="#" className="social">
-                <i className="fab fa-linkedin-in"></i>
-              </a> */}
+
+            <a href="#" className="social" 
+              onClick={(e) => {
+              e.preventDefault()
+              handleGoogleLogin()}}
+            >
+              <FcGoogle size={26} color="#DB4437"/>
+              </a>
+  
             </div>
-            {/* <span>or use your email for registration</span> */}
+            <span>or use your email for registration</span>
             <input type="text" placeholder="Name" />
             <input
               type="email"
@@ -167,18 +229,14 @@ const AuthPage = () => {
         <div className="form-container sign-in-container">
           <form onSubmit={handleLogin}>
             <h1 className="sign-in-heading">Sign in</h1>
-            {/* <div className="social-container">
-              <a href="#" className="social">
-                <i className="fab fa-facebook-f"></i>
+             <div className="social-container">
+
+              <a href="#" className="social" onClick={handleGoogleLogin}>
+              <FcGoogle size={26} color="#DB4437"/>
               </a>
-              <a href="#" className="social">
-                <i className="fab fa-google-plus-g"></i>
-              </a>
-              <a href="#" className="social">
-                <i className="fab fa-linkedin-in"></i>
-              </a>
+
             </div>
-            <span>or use your account</span> */}
+            <span>or use your account</span> 
             <input
               type="email"
               placeholder="Email"

@@ -12,6 +12,7 @@ import friendRequestsRoutes from "./routes/FriendRequestsRoute.js";
 import deleteMsgsRoutes from "./routes/deleteMsgsRoutes.js";
 dotenv.config();
 
+
 const app = express();
 const port = process.env.PORT;
 const databaseURL = process.env.DATABASE_URL;
@@ -19,7 +20,7 @@ const databaseURL = process.env.DATABASE_URL;
 app.use(
   cors({
     origin: [process.env.ORIGIN],
-    // origin: ["http://localhost:3000"],
+    // origin:'http://localhost:3000',
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
     credentials: true,
   })

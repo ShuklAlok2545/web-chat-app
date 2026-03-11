@@ -172,3 +172,9 @@
     min-width: 240px;
   }
 }
+
+@media (max-width:600px){
+  .info{
+    font-size: 10px;
+  }
+}

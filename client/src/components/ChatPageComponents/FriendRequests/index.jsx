@@ -75,7 +75,7 @@ const FriendRequests = () => {
     <div className="friend-requests">
       <div className="header">
         <div className="sub-header">
-          <h1>Friend Requests</h1>
+          <p>Friend Requests</p>
         </div>
         <div className="search-form">
           <div className="search-icon">

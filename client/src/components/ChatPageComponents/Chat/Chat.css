@@ -2,6 +2,8 @@
   padding: 1rem 1rem 0 1rem;
   display: flex;
   gap: 1rem;
+  width: 100%;
+  border-bottom: 1px solid #415763;
 }
 
 .chat:hover {
@@ -56,7 +58,7 @@
 
 .chat .last-message {
   padding-bottom: 1rem;
-  border-bottom: 1px solid #415763;
+  /* border-bottom: 1px solid #415763; */
   color: #8696a0;
   font-size: 0.75rem;
   display: flex;

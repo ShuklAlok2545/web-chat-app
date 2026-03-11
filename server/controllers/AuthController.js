@@ -56,6 +56,65 @@ export const signup = async (request, response, next) => {
   }
 };
 
+export const signupViaGoogle = async (request, response, next) => {
+  try {
+    const { uid, displayName, email, photoURL } = request.body;
+
+    if(!email || !uid){
+      return response
+        .status(400)
+        .json({ error: "Email and password are required" });
+    }
+
+    const userExist = await User.findOne({ email });
+    if(userExist) {
+      response.cookie("jwt", createToken(email, userExist.id), {
+        maxAge,
+        secure: true,
+        sameSite: "None",
+      });
+      return response.status(202).json({
+        userExist: {
+          id: userExist.id,
+          email: userExist.email,
+          profileSetup: userExist.profileSetup,
+          firstName: userExist.firstName,
+          lastName: userExist.lastName,
+          image: userExist.image,
+          color: userExist.color,
+          isAdmin: userExist.email === adminEmail,
+        },
+      });
+    }
+    
+    const salt = await genSalt(10);
+    const pepper = process.env.PEPPER_STRING;
+    const hashedPassword = await bcrypt.hash(salt + uid + pepper, 10);
+
+    const user = await User.create({
+      email,
+      password: hashedPassword,
+      salt: salt,
+    });
+    response.cookie("jwt", createToken(email, user.id), {
+      maxAge,
+      secure: true,
+      sameSite: "None",
+    });
+    return response.status(201).json({
+      user: {
+        id: user.id,
+        email: user.email,
+        profileSetup: user.profileSetup,
+        isAdmin: user.email === adminEmail,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+    return response.status(500).json({ error: error.message });
+  }
+};
+
 export const login = async (request, response, next) => {
   try {
     const { email, password } = request.body;

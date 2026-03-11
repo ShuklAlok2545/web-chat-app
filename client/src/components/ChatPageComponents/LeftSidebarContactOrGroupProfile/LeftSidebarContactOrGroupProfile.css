@@ -307,3 +307,28 @@
   margin: 4px;
   padding: 6px;
 }
+
+@media (max-width:600px){
+  .left-sidebar-contact-or-group-profile .footer{
+    width: 200px;
+    margin: 0;
+    font-size: 12px;
+  }
+  .info-inputs{
+    width: 200px;
+  }
+  .footer.info-input-container{
+    gap: 0;
+    width: 180px;
+    margin: 0;
+    font-size: 12px;
+  }
+  .footer .info-input-container:last-child .shared-files {
+    height: 100px;
+    width: 100%;
+    min-width: fit-content;
+  }
+  
+
+  
+}
