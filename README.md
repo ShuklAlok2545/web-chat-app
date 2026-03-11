@@ -68,7 +68,10 @@ open http://localhost:3000 with your browser to see the result.
 
  ### 📷 Screenshots 
  `Login or Signup and set profile`
- <img width="937" height="702" alt="Screenshot 2026-01-20 at 17 58 58" src="https://github.com/user-attachments/assets/cfeb44f3-72ae-45dd-9c5f-b5d9cf48797b" />
+ <img width="937" height="702"  alt="Screenshot 2026-03-11 at 14 58 04" src="https://github.com/user-attachments/assets/29747133-4914-43ad-91cb-2e33b21dffe4" />
+ <img width="937" height="702" alt="Screenshot 2026-03-11 at 14 57 59" src="https://github.com/user-attachments/assets/670e5c04-826a-4d21-a441-8c881f6d4628" />
+
+
 
  `Profile created after SignUp`
 <img width="1440" height="900" alt="Screenshot 2026-01-11 at 00 15 37" src="https://github.com/user-attachments/assets/4bc9ccbb-ac3c-4f0a-b0f5-3cc138e3e14a" />
